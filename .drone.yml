@@ -10,6 +10,5 @@ steps:
   - name: checkstyle
     image: python:3.5
     commands:
-      - pip --version
       - pip install pylint
       - pylint plover_vcs
