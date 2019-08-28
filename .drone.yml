@@ -1,0 +1,12 @@
+kind: pipeline
+
+steps:
+  - name: build
+    image: python:3.5
+    commands:
+      - python setup.py install
+
+  - name: checkstyle
+    image: python:3.5
+    commands:
+      - pylint plover_vcs
