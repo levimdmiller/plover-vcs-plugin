@@ -6,5 +6,4 @@ steps:
     image: python:3.5
     commands:
       - python setup.py install
-      - pip install pylint
       - pylint plover_vcs
