@@ -6,6 +6,7 @@ steps:
     image: python:3.5
     commands:
       - python setup.py install
+      - pip install gitpython
 
   - name: checkstyle
     image: python:3.5
