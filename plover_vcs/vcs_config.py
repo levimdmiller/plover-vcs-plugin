@@ -20,4 +20,4 @@ class VcsConfig:
 
     @dictionaries.setter
     def dictionaries(self, dictionaries):
-        self.dictionaries = dictionaries
+        self.__dictionaries = dictionaries
