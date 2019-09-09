@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>389</width>
+    <width>396</width>
     <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>VCS Settings</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -34,7 +37,7 @@
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>375</width>
+     <width>377</width>
      <height>231</height>
     </rect>
    </property>
@@ -55,17 +58,21 @@
       </item>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QLabel" name="dictionariesLabel">
       <property name="text">
        <string>Dictionaries</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="1">
      <layout class="QVBoxLayout" name="dictionaryListLayout">
       <item>
-       <widget class="QListView" name="dictionariesListView"/>
+       <widget class="QListWidget" name="dictionariesListWidget">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="dictionaryListControlsLayout">
