@@ -8,3 +8,4 @@ steps:
       - python setup.py install
       - pip install pylint
       - pylint plover_vcs
+      - python -m unittest discover
