@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QFileDialog
 
 from plover_vcs.ui.vcs_settings_ui import Ui_VcsSettings
+from plover_vcs.vcs_config import VcsConfig
 
 
 class VcsSettings(QDialog, Ui_VcsSettings):
@@ -8,9 +9,6 @@ class VcsSettings(QDialog, Ui_VcsSettings):
     def __init__(self):
         super(VcsSettings, self).__init__()
         self.setupUi(self)
-        self.addDictionaryButton.clicked.connect(self.add_dictionary)
-        self.removeDictionaryButton.clicked.connect(self.remove_dictionary)
-        self.dictionariesListWidget.itemDoubleClicked.connect(self.edit_dictionary)
 
     def add_dictionary(self):
         self.dictionariesListWidget.addItem('<dictionary>')
@@ -23,3 +21,8 @@ class VcsSettings(QDialog, Ui_VcsSettings):
         file_name, _ = QFileDialog.getOpenFileName(self, "Select Dictionary File", "", "JSON Files (*.json)")
         if file_name:
             item.setText(file_name)
+
+    def get_config(self):
+        return VcsConfig(self.versionControlSystemComboBox.currentText(), [
+            self.dictionariesListWidget.item(i).text() for i in range(self.dictionariesListWidget.count())
+        ])
