@@ -1,9 +1,8 @@
-from plover_vcs.vcs.vcs_service import VcsService
 from typing import List
 
 
 class VcsConfig:
-    def __init__(self, vcs: VcsService = None, dictionaries: List[str] = None):
+    def __init__(self, vcs: str = "", dictionaries: List[str] = None):
         self.__vcs = vcs
         self.__dictionaries = [] if dictionaries is None else dictionaries
 
@@ -12,7 +11,7 @@ class VcsConfig:
         return self.__vcs
 
     @vcs.setter
-    def vcs(self, vcs: VcsService):
+    def vcs(self, vcs: str):
         self.__vcs = vcs
 
     @property
