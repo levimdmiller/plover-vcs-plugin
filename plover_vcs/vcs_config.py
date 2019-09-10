@@ -14,7 +14,7 @@ class VcsConfig:
         self.__dictionaries = [] if dictionaries is None else dictionaries
 
     @property
-    def vcs(self):
+    def vcs(self) -> str:
         return self.__vcs
 
     @vcs.setter
@@ -22,11 +22,11 @@ class VcsConfig:
         self.__vcs = vcs
 
     @property
-    def dictionaries(self):
+    def dictionaries(self) -> List[str]:
         return self.__dictionaries
 
     @dictionaries.setter
-    def dictionaries(self, dictionaries):
+    def dictionaries(self, dictionaries: List[str]):
         self.__dictionaries = dictionaries
 
 

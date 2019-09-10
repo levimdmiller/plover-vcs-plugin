@@ -23,7 +23,7 @@ class VcsSettings(Tool, QDialog, Ui_VcsSettings):
         if file_name:
             item.setText(file_name)
 
-    def get_config(self):
+    def get_config(self) -> VcsConfig:
         return VcsConfig(self.versionControlSystemComboBox.currentText(), [
             self.dictionariesListWidget.item(i).text() for i in range(self.dictionariesListWidget.count())
         ])

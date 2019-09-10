@@ -20,7 +20,7 @@ class VcsService(ABC):
         """
 
     @abstractmethod
-    def diff(self, file: str):
+    def diff(self, file: str) -> str:
         """
         Commits the given file.
         :param file: file to commit
@@ -39,5 +39,9 @@ IMPLEMENTATIONS = {
 }
 
 
-def vcs_service_factory(repo: str):
-    return IMPLEMENTATIONS[CONFIG_MANAGER.config](repo)
+class VcsServiceFactory:
+    def __init__(self, config_manager):
+        self.config_manager = config_manager
+
+    def create(self, repo: str) -> VcsService:
+        return IMPLEMENTATIONS[self.config_manager.config](repo)

@@ -26,20 +26,20 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
     - deletion
     """
 
-    def get_message(self, diff: str):
+    def get_message(self, diff: str) -> str:
         file_changed = self.get_filename(diff)
         line_changes = self.get_line_changes(diff)
         return "Update {}\n\n{}".format(file_changed, self.format_commit_body(line_changes))
 
     @staticmethod
-    def get_filename(diff: str):
+    def get_filename(diff: str) -> str:
         match = file_name.match(diff)
         if not match:
             return None
         return match.group(1)
 
     @staticmethod
-    def get_line_changes(diff: str):
+    def get_line_changes(diff: str) -> LineChanges:
         file_changes = changes_start.split(diff)[1]
         lines = file_changes.splitlines()
         line_changes = LineChanges()
@@ -52,7 +52,7 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
         return line_changes
 
     @staticmethod
-    def format_dictionary_change(line: str):
+    def format_dictionary_change(line: str) -> str:
         """
         If the line is a change to a json dictionary, format it as
         key: value
@@ -64,7 +64,7 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
             return
         return "{} → {}".format(*match.groups())
 
-    def format_lines(self, lines: List[str], prefix: str = ''):
+    def format_lines(self, lines: List[str], prefix: str = '') -> str:
         """
         formats the given lines:
         [1, 2] ->
@@ -81,6 +81,6 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
             if line is not None
         )
 
-    def format_commit_body(self, line_changes: LineChanges):
+    def format_commit_body(self, line_changes: LineChanges) -> str:
         body = self.format_lines(line_changes.added, 'Added Stroke: ')
         return body + '\n' + self.format_lines(line_changes.deleted, 'Deleted Stroke: ')

@@ -4,11 +4,11 @@ from typing import Callable
 from PyQt5 import QtCore
 
 from plover_vcs.message_generator.message_generator import MessageGenerator
-from plover_vcs.vcs.vcs_service import VcsService
+from plover_vcs.vcs.vcs_service import VcsServiceFactory
 
 
 class FileWatcher:
-    def __init__(self, vcs_factory: Callable[[str], VcsService], message_gen: MessageGenerator):
+    def __init__(self, vcs_factory: VcsServiceFactory, message_gen: MessageGenerator):
         """
         Creates a class that handles watching files and committing changes to them.
         :param vcs_factory: factory for creating VcsService
@@ -27,13 +27,13 @@ class FileWatcher:
         """
         self.watcher.addPath(file)
 
-    def file_changed(self, path):
+    def file_changed(self, path: str):
         """
         Handler that commits the changes as soon as they are detected
         :param path: file to commit
         :return: nothing
         """
-        vcs = self.vcs_factory(os.path.dirname(path))
+        vcs = self.vcs_factory.create(os.path.dirname(path))
         diff = vcs.diff(path)
         if diff:
             commit_message = self.message_gen.get_message(diff)

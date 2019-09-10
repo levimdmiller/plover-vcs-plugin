@@ -15,5 +15,5 @@ class GitVcsService(VcsService):
         self.repo.commit(str)
         self.repo.git.push()
 
-    def diff(self, file: str):
-        self.repo.git.diff(file)
+    def diff(self, file: str) -> str:
+        return self.repo.git.diff(file)
