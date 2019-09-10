@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QDialog, QFileDialog
 
 from plover.gui_qt.tool import Tool
 from plover_vcs.ui.vcs_settings_ui import Ui_VcsSettings
-from plover_vcs.vcs_config import VcsConfig
+from plover_vcs.vcs_config import VcsConfig, CONFIG_MANAGER
 
 
 class VcsSettings(Tool, QDialog, Ui_VcsSettings):
@@ -27,3 +27,7 @@ class VcsSettings(Tool, QDialog, Ui_VcsSettings):
         return VcsConfig(self.versionControlSystemComboBox.currentText(), [
             self.dictionariesListWidget.item(i).text() for i in range(self.dictionariesListWidget.count())
         ])
+
+    def accept(self):
+        CONFIG_MANAGER.config = self.get_config()
+        super().accept()

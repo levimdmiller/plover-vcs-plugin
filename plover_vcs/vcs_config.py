@@ -1,4 +1,11 @@
+import json
+import os
 from typing import List
+from plover.config import CONFIG_DIR
+
+
+# Config path.
+CONFIG_FILE = os.path.join(CONFIG_DIR, 'plover_vcs.json')
 
 
 class VcsConfig:
@@ -21,3 +28,22 @@ class VcsConfig:
     @dictionaries.setter
     def dictionaries(self, dictionaries):
         self.__dictionaries = dictionaries
+
+
+class VcsConfigManager:
+    def __init__(self):
+        with open(CONFIG_FILE, 'r') as f:
+            self.__config = json.load(f)
+
+    @property
+    def config(self) -> VcsConfig:
+        return self.__config
+
+    @config.setter
+    def config(self, config: VcsConfig):
+        self.__config = config
+        with open(CONFIG_FILE, 'w') as f:
+            json.dump(config, f)
+
+
+CONFIG_MANAGER = VcsConfigManager()
