@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from plover_vcs.message_generator.line_changes import LineChanges
 from plover_vcs.message_generator.message_generator import MessageGenerator
@@ -32,7 +32,7 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
         return "Update {}\n\n{}".format(file_changed, self.format_commit_body(line_changes))
 
     @staticmethod
-    def get_filename(diff: str) -> str:
+    def get_filename(diff: str) -> Optional[str]:
         match = file_name.match(diff)
         if not match:
             return None
@@ -52,7 +52,7 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
         return line_changes
 
     @staticmethod
-    def format_dictionary_change(line: str) -> str:
+    def format_dictionary_change(line: str) -> Optional[str]:
         """
         If the line is a change to a json dictionary, format it as
         key: value
@@ -61,7 +61,7 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
         """
         match = dictionary_line.match(line)
         if not match:
-            return
+            return None
         return "{} → {}".format(*match.groups())
 
     def format_lines(self, lines: List[str], prefix: str = '') -> str:

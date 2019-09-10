@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 from plover_vcs.vcs.git_vcs_service import GitVcsService
-from plover_vcs.vcs_config import CONFIG_MANAGER
 
 
 class VcsService(ABC):
