@@ -5,7 +5,7 @@ steps:
   - name: build
     image: python:3.5
     commands:
-      - python install PyQt5-sip
+      - pip install PyQt5-sip
       - python setup.py install
 #      - pip install pylint
 #      - pylint plover_vcs
