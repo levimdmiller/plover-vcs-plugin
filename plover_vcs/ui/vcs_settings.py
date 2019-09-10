@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import QDialog, QFileDialog
 
+from plover.gui_qt.tool import Tool
 from plover_vcs.ui.vcs_settings_ui import Ui_VcsSettings
 from plover_vcs.vcs_config import VcsConfig
 
 
-class VcsSettings(QDialog, Ui_VcsSettings):
+class VcsSettings(Tool, QDialog, Ui_VcsSettings):
 
     def __init__(self):
         super(VcsSettings, self).__init__()
