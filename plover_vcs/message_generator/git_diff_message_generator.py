@@ -74,9 +74,10 @@ class GitSingleFileDiffMessageGenerator(MessageGenerator):
         :param prefix: prefix to append to each line
         :return: lines as formatted string
         """
+        formatted_lines = (self.format_dictionary_change(line) for line in lines)
         return '\n'.join(
-            prefix + self.format_dictionary_change(line)
-            for line in lines
+            prefix + line
+            for line in formatted_lines
             if line is not None
         )
 

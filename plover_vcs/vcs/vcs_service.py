@@ -2,31 +2,26 @@ from abc import ABC, abstractmethod
 
 
 class VcsService(ABC):
-    @abstractmethod
-    def add(self, file: str):
+    def __init__(self, repo: str):
         """
-        Adds the given file to the files to be committed.
-        :param file:
+        Creates the VcsService
+        :param repo: repo path
         """
 
     @abstractmethod
-    def commit(self, message: str):
+    def commit(self, file: str, message: str):
         """
         Commits the given file to the underlying repo with the given message
+        :param file: file to commit
         :param message: commit message
         """
 
     @abstractmethod
-    def pull(self):
+    def diff(self, file: str):
         """
-        Pulls the most recent changes.
-        """
-
-    @abstractmethod
-    def switch(self, branch: str):
-        """
-        Switches to the given branch
-        :param branch: name of branch
+        Commits the given file.
+        :param file: file to commit
+        :return:
         """
 
 

@@ -6,16 +6,14 @@ from git import Repo
 @wrap_exceptions()
 class GitVcsService(VcsService):
     def __init__(self, repo: str):
+        super().__init__(repo)
         self.repo = Repo.init(repo)
 
-    def add(self, file: str):
-        self.repo.git.add(file)
-
-    def commit(self, message: str):
-        self.repo.commit(str)
-
-    def pull(self):
+    def commit(self, file: str, message: str):
         self.repo.git.pull()
+        self.repo.git.add(file)
+        self.repo.commit(str)
+        self.repo.git.push()
 
-    def switch(self, branch: str):
-        self.repo.git.checkout(branch)
+    def diff(self, file: str):
+        self.repo.git.diff(file)
