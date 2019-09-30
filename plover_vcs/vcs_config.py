@@ -32,8 +32,11 @@ class VcsConfig:
 
 class VcsConfigManager:
     def __init__(self):
-        with open(CONFIG_FILE, 'r') as f:
-            self.__config = json.load(f)
+        if not os.path.isfile(CONFIG_FILE):
+            self.__config = VcsConfig()
+        else:
+            with open(CONFIG_FILE, 'r') as f:
+                self.__config = json.load(f)
 
     @property
     def config(self) -> VcsConfig:

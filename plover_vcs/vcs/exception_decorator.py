@@ -1,4 +1,4 @@
-from plover_vcs.vcs.vcs_service import VcsException
+from plover_vcs.vcs.vcs_exception import VcsException
 import inspect
 
 

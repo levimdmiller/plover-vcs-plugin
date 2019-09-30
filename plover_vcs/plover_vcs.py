@@ -1,6 +1,6 @@
 from plover_vcs.file_watcher import FileWatcher
 from plover_vcs.message_generator.git_diff_message_generator import GitSingleFileDiffMessageGenerator
-from plover_vcs.vcs.vcs_service import VcsServiceFactory
+from plover_vcs.vcs.vcs_service_factory import VcsServiceFactory
 from plover_vcs.vcs_config import CONFIG_MANAGER
 
 

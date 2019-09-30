@@ -1,10 +1,9 @@
 import os
-from typing import Callable
 
 from PyQt5 import QtCore
 
 from plover_vcs.message_generator.message_generator import MessageGenerator
-from plover_vcs.vcs.vcs_service import VcsServiceFactory
+from plover_vcs.vcs.vcs_service_factory import VcsServiceFactory
 
 
 class FileWatcher:
