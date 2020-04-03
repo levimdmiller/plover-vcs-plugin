@@ -2,4 +2,4 @@
 exclude plover_vcs/ui/*_rc.py
 exclude plover_vcs/ui/*_ui.py
 include plover_vcs/ui/*.ui
-recursive-include plover_vcs/ui/resources *
+recursive-include plover_vcs/resources *
